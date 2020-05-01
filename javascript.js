@@ -28,9 +28,15 @@ fetch('entries.json')
     var genre = data["items"]["1"]["genre-v2"];
     var plaats = data["items"]["1"]["excerpt"];
     var duur = data["items"]["1"]["video-length"];
-	
+    
+    //items in html zetten
+    document.getElementById("naamVideo").innerHTML = naam;
+    document.getElementById("genreVideo").innerHTML = genre;
+    document.getElementById("locatieVideo").innerHTML = plaats;
+    document.getElementById("duratieVideo").innerHTML = duur;
 
 
+    //kijken welke data ik terugkrijg
     console.log(data)
     console.log(naam)
     console.log(genre)

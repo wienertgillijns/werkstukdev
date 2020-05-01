@@ -339,7 +339,7 @@ form {
     .infovideo {
         padding: 36px;
     }
-    .genreVideo {
+    #genreVideo {
         display: inline-block;
     margin-bottom: 24px;
     padding: 3px 9px 3px 12px;
