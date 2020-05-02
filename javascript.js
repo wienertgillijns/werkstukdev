@@ -93,14 +93,22 @@ for (var i = 0; i < arrayLength; i++) {
 var elkevideo = '';
 for (var i = 0; i < arrayLength; i++) {
      var getAge = data["items"][i]["age"];
+     
+     var loopAgeNormal = '<div id="ageVideo">'+ getAge + '</div>';
+     var loopAgeUndefined = '';
      if (getAge === undefined) {
-        getAge = "";
-      }
-   elkevideo += '<section class="apartevideo"><section class="bovendeel"><div id="genreVideo">'+ data["items"][i]["genre-v2"] + '</div><div id="ageVideo">' + getAge +'</div><img class="foto" src="'+ data["items"][i]["thumbnail"]["url"] +'"></section><article class="infovideo"><h2 id="naamVideo">'+ data["items"][i]["name"] +'</h2><p id="locatieVideo">'+ data["items"][i]["excerpt"] +'</p><p id="duratieVideo">'+ data["items"][i]["video-length"] +'</p></article></section>';
+        
 
-   if (getAge === undefined) {
-    getAge = "";
-  }
+        getAge =  loopAgeUndefined;
+
+       
+
+          }else {
+            getAge =  loopAgeNormal;
+          }
+   elkevideo += '<section class="apartevideo"><section class="bovendeel"><div id="genreVideo">'+ data["items"][i]["genre-v2"] + '</div>' + getAge + '<img class="foto" src="'+ data["items"][i]["thumbnail"]["url"] +'"></section><article class="infovideo"><h2 id="naamVideo">'+ data["items"][i]["name"] +'</h2><p id="locatieVideo">'+ data["items"][i]["excerpt"] +'</p><p id="duratieVideo">'+ data["items"][i]["video-length"] +'</p></article></section>';
+
+   
 
   
  
