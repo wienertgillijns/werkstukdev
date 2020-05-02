@@ -30,25 +30,35 @@ fetch('entries.json')
 
 var arrayLength = data["items"].length;
 for (var i = 0; i < arrayLength; i++) {
-    console.log(data["items"][i]);
+    // console.log(data["items"][i]);
     //Do something
 
-    var naam = data["items"][i]["name"];
-    var genre = data["items"][i]["genre-v2"];
-    var plaats = data["items"][i]["excerpt"];
-    var duur = data["items"][i]["video-length"];
+
+
+    //data eruit halen
+    // var naam = data["items"][i]["name"];
+    // var genre = data["items"][i]["genre-v2"];
+    // var plaats = data["items"][i]["excerpt"];
+    // var duur = data["items"][i]["video-length"];
+        // var leeftijd = data["items"][i]["age"];
     
     //items in html zetten
-    document.getElementById("naamVideo").innerHTML = naam;
-    document.getElementById("genreVideo").innerHTML = genre;
-    document.getElementById("locatieVideo").innerHTML = plaats;
-    document.getElementById("duratieVideo").innerHTML = duur;
+    // document.getElementById("naamVideo").innerHTML = naam;
+    // document.getElementById("genreVideo").innerHTML = genre;
+    // document.getElementById("locatieVideo").innerHTML = plaats;
+    // document.getElementById("duratieVideo").innerHTML = duur;
 
 
 
 
     
 
+
+
+    // loopvideos = "<section>" + data["items"][i]["genre-v2"] + "</section>";
+    // document.getElementById("alleVideos").innerHTML = loopvideos;
+
+//probeersel
 //     let getNaamVideo =  data["items"][i]["name"];
 //   $('section.videos').append(`
 //   <section class="apartevideo">
@@ -71,6 +81,27 @@ for (var i = 0; i < arrayLength; i++) {
 
 }
 
+
+
+
+
+
+
+
+
+
+var elkevideo = '';
+for (var i = 0; i < arrayLength; i++) {
+   elkevideo += '<section class="apartevideo"><section class="bovendeel"><div id="genreVideo">'+ data["items"][i]["genre-v2"] + '</div><div id="ageVideo">' + data["items"][i]["age"] +'</div><img class="foto" src="'+ data["items"][i]["thumbnail"]["url"] +'"></section><article class="infovideo"><h2 id="naamVideo">'+ data["items"][i]["name"] +'</h2><p id="locatieVideo">'+ data["items"][i]["excerpt"] +'</p><p id="duratieVideo">'+ data["items"][i]["video-length"] +'</p></article></section>';
+}
+
+
+var loopAparteVideos = document.getElementById("test");
+loopAparteVideos.innerHTML = elkevideo;    
+
+
+// var url = data["items"][9]["link-to-video"]["url"];
+console.log(data);
 
 
 // for (int i=0; i<data.size(); i++) {
