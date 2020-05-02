@@ -30,7 +30,7 @@ https://docs.google.com/presentation/d/1tlhfJPTmw0MP4kfKSdszo4bUSKwG9xRcuSmzhbki
 ## Verslag Wienert Gillijns
 - Hallo, eerst en vooral wil ik je van harte welkom heten.
 Mijn werkstuk heb ik in stapjes aangepakt, hieronder zal je dan ook alles kunnen raadplegen.
-De back-end is voor mij een enorme uitdaging, bij deze opdracht ben ik dus verschillende keer uitgedaagd geweest met verschillende problemen. Ik heb een aantal euforia's gekregen omdat ik verschillende dingen heb kunnen realiseren waarvan ik nooit had gedacht dit mogelijk zou zijn ;).
+De back-end is voor mij een enorme uitdaging, bij deze opdracht ben ik dus verschillende keer uitgedaagd geweest met verschillende problemen. Ik heb een aantal eufories gekregen omdat ik verschillende dingen heb kunnen realiseren waarvan ik nooit had gedacht dit mogelijk zou zijn voor mij ;).
 
 Ik heb het werkstuk opgeload naar mijn Github. Zo kan ik maar ook u de verschillende commits zien hoe ik er juist aan ben begonnen. Sommige commits bevatten vele codes, dit kwam echter omdat ik het vergeten was en zo in de flow zat :)
 

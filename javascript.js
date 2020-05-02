@@ -1,3 +1,6 @@
+
+
+
 fetch('entries.json')
   .then(response => {
     return response.json()
@@ -106,32 +109,14 @@ for (var i = 0; i < arrayLength; i++) {
           }else {
             getAge =  loopAgeNormal;
           }
-   elkevideo += '<section class="apartevideo"><section class="bovendeel"><div id="genreVideo">'+ data["items"][i]["genre-v2"] + '</div>' + getAge + '<img class="foto" src="'+ data["items"][i]["thumbnail"]["url"] +'"></section><article class="infovideo"><h2 id="naamVideo">'+ data["items"][i]["name"] +'</h2><p id="locatieVideo">'+ data["items"][i]["excerpt"] +'</p><p id="duratieVideo">'+ data["items"][i]["video-length"] +'</p></article></section>';
+   elkevideo += '<section class="apartevideo videosapart"><section class="bovendeel"><div id="genreVideo">'+ data["items"][i]["genre-v2"] + '</div>' + getAge + '<img class="foto" src="'+ data["items"][i]["thumbnail"]["url"] +'"></section><article class="infovideo"><h2 id="naamVideo">'+ data["items"][i]["name"] +'</h2><p id="locatieVideo">'+ data["items"][i]["excerpt"] +'</p><p id="duratieVideo">'+ data["items"][i]["video-length"] +'</p></article></section>';
 
    
 
   
- 
-// var item1 = document.getElementById("ageVideo");
-// var x = item1.isEqualNode("undefined");
-// document.getElementById("ageVideo").style.display = "none";
-// if(data["items"][i]["age"] ===undefined){
-// console.log("ja");
 
-// document.getElementById("ageVideos").style.color = "blue";
-// }else {
-    
-//     console.log("nee");
-// }
-
-
-var loopAparteVideos = document.getElementById("test");
+var loopAparteVideos = document.getElementById("jsonarticles");
 loopAparteVideos.innerHTML = elkevideo;    
-
-
-
-
-
 
 
 
@@ -146,10 +131,6 @@ loopAparteVideos.innerHTML = elkevideo;
 console.log(data);
 
 
-// for (int i=0; i<data.size(); i++) {
-//     System.out.println(data.get(i));
-// }
-
 
 
   })
@@ -158,9 +139,49 @@ console.log(data);
   })
 
 
-
+  
 
   
 
 
 
+
+
+
+
+//   $(document).ready(function() {
+//     $(".videos").slice(0, 3).show();
+//     if ($(".videos:hidden").length != 0) {
+//       $("#bekijkMeer").show();
+//     }
+//     $("#bekijkMeer").on('click', function(e) {
+//       e.preventDefault();
+//       $(".videos:hidden").slice(0, 6).slideDown();
+//       if ($(".videos:hidden").length == 0) {
+//         $("#bekijkMeer").fadeOut('slow');
+//       }
+//     });
+// //   });
+// $( document ).ready(function() {
+//     $(".apartevideo").slice(0, 4).show();
+
+    // $("#bekijkMeer").on("click", function(e){
+    //   e.preventDefault();
+    //   $(".apartevideo:hidden").slice(0, 4).slideDown();
+    //   if($(".apartevideo:hidden").length == 0) {
+    //     $("#bekijkMeer").text("Geen videos meer").addClass("noContent");
+    //   }
+    // })
+// });
+$(function(){
+    $(".apartevideo").slice(0, 2).show(); // select the first ten
+    
+    $("#bekijkMeer").click(function(e){ // click event for load more
+        
+        e.preventDefault();
+        $(".apartevideo:hidden").slice(0, 10).show(); // select next 10 hidden divs and show them
+        if($(".apartevideo:hidden").length == 0){ // check if any hidden divs still exist
+            $("#bekijkMeer").text("Geen resultaten meer").addClass("noContent");
+        }
+    });
+});
