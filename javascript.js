@@ -93,11 +93,33 @@ for (var i = 0; i < arrayLength; i++) {
 var elkevideo = '';
 for (var i = 0; i < arrayLength; i++) {
    elkevideo += '<section class="apartevideo"><section class="bovendeel"><div id="genreVideo">'+ data["items"][i]["genre-v2"] + '</div><div id="ageVideo">' + data["items"][i]["age"] +'</div><img class="foto" src="'+ data["items"][i]["thumbnail"]["url"] +'"></section><article class="infovideo"><h2 id="naamVideo">'+ data["items"][i]["name"] +'</h2><p id="locatieVideo">'+ data["items"][i]["excerpt"] +'</p><p id="duratieVideo">'+ data["items"][i]["video-length"] +'</p></article></section>';
+
+
+
+  
+ 
+// var item1 = document.getElementById("ageVideo");
+// var x = item1.isEqualNode("undefined");
+// document.getElementById("ageVideo").style.display = "none";
+
+   
 }
 
 
 var loopAparteVideos = document.getElementById("test");
 loopAparteVideos.innerHTML = elkevideo;    
+
+
+
+
+var d1 = document.getElementById('ageVideo');
+if(d1.innerHTML==='undefined'){
+ d1.innerHTML = document.getElementById("ageVideo").style.display = "none";
+}
+
+
+
+
 
 
 // var url = data["items"][9]["link-to-video"]["url"];
@@ -114,5 +136,11 @@ console.log(data);
   .catch(err => {
     // Do something for an error here
   })
+
+
+
+
+  
+
 
 
