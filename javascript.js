@@ -92,18 +92,29 @@ for (var i = 0; i < arrayLength; i++) {
 
 var elkevideo = '';
 for (var i = 0; i < arrayLength; i++) {
-   elkevideo += '<section class="apartevideo"><section class="bovendeel"><div id="genreVideo">'+ data["items"][i]["genre-v2"] + '</div><div id="ageVideo">' + data["items"][i]["age"] +'</div><img class="foto" src="'+ data["items"][i]["thumbnail"]["url"] +'"></section><article class="infovideo"><h2 id="naamVideo">'+ data["items"][i]["name"] +'</h2><p id="locatieVideo">'+ data["items"][i]["excerpt"] +'</p><p id="duratieVideo">'+ data["items"][i]["video-length"] +'</p></article></section>';
+     var getAge = data["items"][i]["age"];
+     if (getAge === undefined) {
+        getAge = "";
+      }
+   elkevideo += '<section class="apartevideo"><section class="bovendeel"><div id="genreVideo">'+ data["items"][i]["genre-v2"] + '</div><div id="ageVideo">' + getAge +'</div><img class="foto" src="'+ data["items"][i]["thumbnail"]["url"] +'"></section><article class="infovideo"><h2 id="naamVideo">'+ data["items"][i]["name"] +'</h2><p id="locatieVideo">'+ data["items"][i]["excerpt"] +'</p><p id="duratieVideo">'+ data["items"][i]["video-length"] +'</p></article></section>';
 
-
+   if (getAge === undefined) {
+    getAge = "";
+  }
 
   
  
 // var item1 = document.getElementById("ageVideo");
 // var x = item1.isEqualNode("undefined");
 // document.getElementById("ageVideo").style.display = "none";
+// if(data["items"][i]["age"] ===undefined){
+// console.log("ja");
 
-   
-}
+// document.getElementById("ageVideos").style.color = "blue";
+// }else {
+    
+//     console.log("nee");
+// }
 
 
 var loopAparteVideos = document.getElementById("test");
@@ -112,12 +123,13 @@ loopAparteVideos.innerHTML = elkevideo;
 
 
 
-var d1 = document.getElementById('ageVideo');
-if(d1.innerHTML==='undefined'){
- d1.innerHTML = document.getElementById("ageVideo").style.display = "none";
+
+
+
+
+
+ 
 }
-
-
 
 
 
