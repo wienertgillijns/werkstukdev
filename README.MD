@@ -45,7 +45,9 @@ Het was even zoeken maar uiteindelijk kon ik wel in een array de data eruit hale
 
 De volgende stap was een loop maken zodat telkens de videos werden toegevoegd. Eerst ging hij loopen in hetzelfde object en zag ik het laatste in de array, ik was al goed bezig maar dit was toch nog niet het verwachte resultaat. Uiteindelijk is het me toch gelukt om telkens een nieuw object aan te maken voor elke video adhv een loop.
 
-Ik zag ook dat er bij age heel vaak "Undefined" staat. Hier waren geen waardes voor en op de echte website werd dan de container verborgen. Aangezien het element niet in html staat maar in javascript geschreven, kon ik dit niet met "document.getElementById("ageVideos").style.display = "none";" oplossen. Ik heb dus een loop in de loop van de videos moeten zetten om die undefined op te zoeken en eruit te halen.
+Ik zag ook dat er bij heel wat elementen  vaak "Undefined" staat. Hier waren geen waardes voor en op de echte website werd dan de container verborgen. Aangezien het element niet in html staat maar in javascript geschreven, kon ik dit niet met "document.getElementById("").style.display = "none";" oplossen. Ik heb dus voor iedere array een loop in de loop van de videos moeten zetten om die undefined op te zoeken en eruit te halen. And it worked!
+
+De button voor meer videos te laden is toegevoegd maar werkt nog niet helemaal. Ik heb besloten om dit eventjes op kant te schuiven en mij te concentreren op het filteren van de video's.
 
 
 )
