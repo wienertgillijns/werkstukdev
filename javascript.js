@@ -43,6 +43,7 @@ for (var i = 0; i < arrayLength; i++) {
     // var genre = data["items"][i]["genre-v2"];
     // var plaats = data["items"][i]["excerpt"];
     // var duur = data["items"][i]["video-length"];
+    // var opgenomen = data["items"][i]["recorded-at"];
         // var leeftijd = data["items"][i]["age"];
     
     //items in html zetten
@@ -95,21 +96,67 @@ for (var i = 0; i < arrayLength; i++) {
 
 var elkevideo = '';
 for (var i = 0; i < arrayLength; i++) {
-     var getAge = data["items"][i]["age"];
      
+    var getAge = data["items"][i]["age"]; 
      var loopAgeNormal = '<div id="ageVideo">'+ getAge + '</div>';
      var loopAgeUndefined = '';
      if (getAge === undefined) {
         
 
         getAge =  loopAgeUndefined;
-
-       
-
           }else {
             getAge =  loopAgeNormal;
           }
-   elkevideo += '<section class="apartevideo videosapart"><section class="bovendeel"><div id="genreVideo">'+ data["items"][i]["genre-v2"] + '</div>' + getAge + '<img class="foto" src="'+ data["items"][i]["thumbnail"]["url"] +'"></section><article class="infovideo"><h2 id="naamVideo">'+ data["items"][i]["name"] +'</h2><p id="locatieVideo">'+ data["items"][i]["excerpt"] +'</p><p id="duratieVideo">'+ data["items"][i]["video-length"] +'</p></article></section>';
+
+          var getlocatieVideo = data["items"][i]["excerpt"]; 
+          var loopLocatieNormal = '<p id="locatieVideo">'+ getlocatieVideo + '</p>';
+          var loopLocatieUndefined = '';
+          if (getlocatieVideo === undefined) {
+             
+     
+            getlocatieVideo =  loopLocatieUndefined;
+               }else {
+                getlocatieVideo =  loopLocatieNormal;
+               }
+
+               var getOpgenomenVideo = data["items"][i]["recorded-at"]; 
+          var loopOpgegomenNormal = '<p id="opgenomenVideo">'+ getOpgenomenVideo + '</p>';
+          var loopOpgegomenUndefined = '';
+          if (getOpgenomenVideo === undefined) {
+             
+     
+            getOpgenomenVideo =  loopOpgegomenUndefined;
+     
+            
+     
+               }else {
+                getOpgenomenVideo =  loopOpgegomenNormal;
+               }
+
+               var getDuratieVideo = data["items"][i]["video-length"]; 
+          var loopDuratieNormal = '<p id="duratieVideo">'+ getDuratieVideo + '</p>';
+          var loopODuratieUndefined = '';
+          if (getDuratieVideo === undefined) {
+             
+     
+            getDuratieVideo =  loopODuratieUndefined;
+     
+            
+     
+               }else {
+                getDuratieVideo =  loopDuratieNormal;
+               }
+     
+
+
+
+
+
+
+
+
+
+   elkevideo += '<section class="apartevideo videosapart"><section class="bovendeel"><div id="genreVideo">'+ data["items"][i]["genre-v2"] + '</div>' + getAge + '<img class="foto" src="'+ data["items"][i]["thumbnail"]["url"] +'"></section><article class="infovideo"><h2 id="naamVideo">'+ data["items"][i]["name"] +'</h2>'+ '<p id="locatieVideo">'+ getlocatieVideo + getOpgenomenVideo + getDuratieVideo +'</article></section>';
 
    
 
@@ -174,7 +221,7 @@ console.log(data);
     // })
 // });
 $(function(){
-    $(".apartevideo").slice(0, 2).show(); // select the first ten
+    $(".apartevideo").slice(0, 1).show(); // select the first ten
     
     $("#bekijkMeer").click(function(e){ // click event for load more
         
