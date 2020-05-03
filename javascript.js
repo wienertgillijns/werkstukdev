@@ -102,24 +102,63 @@ $(function () {
 
 
                 //filteren
+                var countLiteratuur = 0;
+                var countComedy = 0;
+                var countCircus = 0;
+                var countDans = 0;
+                var countFigurentheater = 0;
+                var countMultidisciplinair = 0;
+                var countTheater = 0;
+                var countOpera = 0;
+                var countMuziektheater = 0;
+                var countConcert = 0;
+
                 for (var i = 0; i < arrayLength; i++) {
-                    var filterConcert = data["items"][i]["genre-v2"];
-                    var count = 0;
-
-                 if (filterConcert === "comedy"){
-                     count++;
-                 }
-                 
-                 console.log(count);
-                  document.getElementById("filterConcert").innerHTML = "concert" + " (" + count + ")";
-
-
-
-
-
-
+                    var genre = data["items"][i]["genre-v2"];
+                   
+                    if (genre === "literatuur"){
+                        countLiteratuur++;
+                    }
+                    if (genre === "comedy"){
+                        countComedy++;
+                    }
+                    if (genre === "circus"){
+                        countCircus++;
+                    }
+                    if (genre === "dans"){
+                        countDans++;
+                    }
+                    if (genre === "figurentheater"){
+                        countFigurentheater++;
+                    }
+                    if (genre === "multidisciplinair"){
+                        countMultidisciplinair++;
+                    }
+                    if (genre === "theater"){
+                        countTheater++;
+                    }
+                    if (genre === "opera"){
+                        countOpera++;
+                    }
+                    if (genre === "muziektheater"){
+                        countMuziektheater++;
+                    }
+                    if (genre === "concert"){
+                        countConcert++;
+                    }
                 }
-               
+       
+                document.getElementById("literatuur").innerHTML = "literatuur" + " (" + countLiteratuur + ")";
+                document.getElementById("comedy").innerHTML = "Comedy" + " (" + countComedy + ")";
+                 console.log(countLiteratuur);
+                document.getElementById("circus").innerHTML = "Circus" + " (" + countCircus + ")";
+                document.getElementById("dans").innerHTML = "Dans" + " (" + countDans + ")";
+                document.getElementById("figurentheater").innerHTML = "Figurentheater" + " (" + countFigurentheater + ")";
+                document.getElementById("multidisciplinair").innerHTML = "Multidisciplinair" + " (" + countMultidisciplinair + ")";
+                document.getElementById("theater").innerHTML = "Theater" + " (" + countTheater + ")";
+                document.getElementById("opera").innerHTML = "Opera" + " (" + countOpera + ")";
+                document.getElementById("muziektheater").innerHTML = "Muziektheater" + " (" + countMuziektheater + ")";
+                document.getElementById("concert").innerHTML = "Concert" + " (" + countConcert + ")";
                
                
 
