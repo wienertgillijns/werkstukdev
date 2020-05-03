@@ -12,9 +12,7 @@ $(function () {
 
             //array voor data ui de JSON file te halen
             var arrayLength = data["items"].length;
-            for (var i = 0; i < arrayLength; i++) {
-
-            }
+           
 
 
             //videosectie weergeven
@@ -75,18 +73,40 @@ $(function () {
                 var loopAparteVideos = document.getElementById("jsonarticles");
                 loopAparteVideos.innerHTML = elkevideo;
 
+
+
+
+               
+      
+                
             }
 
 
 
 
+            
+          
+
+
+
+
+
+            console.log(data);
+
+                  
+         
 
             
 
 
 
 
-            console.log(data);
+            const array = data;
+            const concertarray = array.filter((concert) => concert.genre-v2 === 'concert'); 
+            console.log(concertarray);
+
+
+
         })
         .catch(err => {
             // Do something for an error here
@@ -94,7 +114,8 @@ $(function () {
 
 
 
-
+    
+        
 
 
 
@@ -117,6 +138,7 @@ $(function () {
 
 
 
+   
 
 
 
@@ -125,13 +147,16 @@ $(function () {
 
 });
 
+// function myfunction() {
+//     if(data["items"][i]["category"] === "volwassenen"){
+//         console.log("Ja")
+//     } 
+//     console.log("Nee")
 
+//   }
 
-
-
-
-
-
+// for (var i = 0; i < arrayLength; i++) {
+//}
 
 
 //     let getNaamVideo =  data["items"]["1"]["name"];
@@ -198,8 +223,17 @@ $(function () {
 
 
 
+
+
 // var url = data["items"][9]["link-to-video"]["url"];
 
+
+
+
+
+//  var array = data["items"][i]["category"];
+// var volwassenen = array.filter((familieVideos) => familieVideos.data["items"][i]["category"] ==='familie');
+// console.log(volwassenen);
 
 
 //   $(document).ready(function() {
