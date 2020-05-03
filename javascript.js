@@ -12,7 +12,7 @@ $(function () {
 
             //array voor data ui de JSON file te halen
             var arrayLength = data["items"].length;
-           
+
 
 
             //videosectie weergeven
@@ -59,11 +59,11 @@ $(function () {
 
                 var getDuratieVideo = data["items"][i]["video-length"];
                 var loopDuratieNormal = '<p id="duratieVideo">' + getDuratieVideo + '</p>';
-                var loopODuratieUndefined = '';
+                var loopDuratieUndefined = '';
                 if (getDuratieVideo === undefined) {
 
 
-                    getDuratieVideo = loopODuratieUndefined;
+                    getDuratieVideo = loopDuratieUndefined;
                 } else {
                     getDuratieVideo = loopDuratieNormal;
                 }
@@ -76,34 +76,44 @@ $(function () {
 
 
 
-               
-      
-                
+
+
+
             }
 
 
 
 
-            
+
+
+
+
           
 
 
 
+                // console.log(data["items"][i]["genre-v2"]);
+
+                // var testgenre = data["items"][i]["genre-v2"];
+
+                // const array = testgenre;
+                // const concertarray = array.filter((concert) => testgenre.genre === 'dans');
+                // console.log(concertarray);
 
 
-            console.log(data);
+                //filteren
+                for (var i = 0; i < arrayLength; i++) {
+                    var filterConcert = data["items"][i]["genre-v2"];
+                 if (filterConcert === "theater"){
+                     console.log("ja");
+                 }else {
+                    console.log("nee");
+                 }
 
-                  
-         
+                }
+                console.log("ja");
+               
 
-            
-
-
-
-
-            const array = data;
-            const concertarray = array.filter((concert) => concert.genre-v2 === 'concert'); 
-            console.log(concertarray);
 
 
 
@@ -114,8 +124,6 @@ $(function () {
 
 
 
-    
-        
 
 
 
@@ -138,7 +146,7 @@ $(function () {
 
 
 
-   
+
 
 
 
