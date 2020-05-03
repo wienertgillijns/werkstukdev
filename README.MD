@@ -48,6 +48,8 @@ De volgende stap was een loop maken zodat telkens de videos werden toegevoegd. E
 Ik zag ook dat er bij heel wat elementen  vaak "Undefined" staat. Hier waren geen waardes voor en op de echte website werd dan de container verborgen. Aangezien het element niet in html staat maar in javascript geschreven, kon ik dit niet met "document.getElementById("").style.display = "none";" oplossen. Ik heb dus voor iedere array een loop in de loop van de videos moeten zetten om die undefined op te zoeken en eruit te halen. And it worked!
 
 De button voor meer videos te laden is toegevoegd maar werkt nog niet helemaal. Ik heb besloten om dit eventjes op kant te schuiven en mij te concentreren op het filteren van de video's.
+Ik heb eerst geprobeerd om een for loop te maken en telkens het aangegeven genre op te vragen en weer te geven in de concole.log, aan de hand van deze methode wist ik ook hoeveel videos dit genre bevatten zodat ik dit in de button tussen de haakjes kan weergeven :)
+
 
 
 )

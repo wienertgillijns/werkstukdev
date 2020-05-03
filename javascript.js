@@ -104,16 +104,23 @@ $(function () {
                 //filteren
                 for (var i = 0; i < arrayLength; i++) {
                     var filterConcert = data["items"][i]["genre-v2"];
-                 if (filterConcert === "theater"){
-                     console.log("ja");
-                 }else {
-                    console.log("nee");
+                    var count = 0;
+
+                 if (filterConcert === "comedy"){
+                     count++;
                  }
+                 console.log(count);
+                  document.getElementById("TESTTTT").innerHTML = count;
+
+
+
+
+
 
                 }
-                console.log("ja");
                
-
+               
+               
 
 
 
@@ -236,7 +243,29 @@ $(function () {
 // var url = data["items"][9]["link-to-video"]["url"];
 
 
+// for (var i = 0; i < arrayLength; i++) {
+//     var filterConcert = data["items"][i]["genre-v2"];
 
+
+    
+
+//  if (filterConcert === "concert"){
+    
+   
+//         console.log("count");
+      
+
+
+
+
+//  }else {
+   
+//  }
+
+
+//  document.getElementById("TESTTTT").innerHTML = count;
+
+// }
 
 
 //  var array = data["items"][i]["category"];
