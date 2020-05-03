@@ -109,8 +109,9 @@ $(function () {
                  if (filterConcert === "comedy"){
                      count++;
                  }
+                 
                  console.log(count);
-                  document.getElementById("TESTTTT").innerHTML = count;
+                  document.getElementById("filterConcert").innerHTML = "concert" + " (" + count + ")";
 
 
 
