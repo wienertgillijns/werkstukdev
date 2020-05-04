@@ -199,34 +199,28 @@ $(function () {
 //filteren
 document.getElementById("literatuur").addEventListener("click", clickLiteratuur);
 
-var zoekGenres = document.getElementById("genreVideo").innerHTML;
-
 function clickLiteratuur() {
     console.log("click");
     
-
+    var zoekGenres = document.getElementById("genreVideo").innerHTML;
     for (var i = 0; i < 100; i++) {
         
-        if (zoekGenres === "literatuur") {
+        if (data["items"][i]["genre-v2"] === "literatuur") {
             console.log("ja");
-
-            // document.getElementById("filterVideos").style.display = "none";
-
 
         }else {
             console.log("nee");
+
+           
         }
 
     }
 }
 
-
-
         })
         .catch(err => {
             // Do something for an error here
         })
-
 
 
         
