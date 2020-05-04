@@ -54,7 +54,3 @@ Ik heb eerst geprobeerd om een for loop te maken en telkens het aangegeven genre
 
 
 
-)
-
-
-
