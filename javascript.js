@@ -8,7 +8,7 @@ $(function () {
             // Work with JSON data here
             //items van 0 eruit halen
 
-
+            countGenres(data.items);
 
             //array voor data ui de JSON file te halen
             var arrayLength = data["items"].length;
@@ -92,62 +92,6 @@ $(function () {
 
 
 
-            // console.log(data["items"][i]["genre-v2"]);
-
-            // var testgenre = data["items"][i]["genre-v2"];
-
-            // const array = testgenre;
-            // const concertarray = array.filter((concert) => testgenre.genre === 'dans');
-            // console.log(concertarray);
-
-
-            //filteren
-            var countLiteratuur = 0;
-            var countComedy = 0;
-            var countCircus = 0;
-            var countDans = 0;
-            var countFigurentheater = 0;
-            var countMultidisciplinair = 0;
-            var countTheater = 0;
-            var countOpera = 0;
-            var countMuziektheater = 0;
-            var countConcert = 0;
-
-            for (var i = 0; i < arrayLength; i++) {
-                var genre = data["items"][i]["genre-v2"];
-
-                if (genre === "literatuur") {
-                    countLiteratuur++;
-                }
-                if (genre === "comedy") {
-                    countComedy++;
-                }
-                if (genre === "circus") {
-                    countCircus++;
-                }
-                if (genre === "dans") {
-                    countDans++;
-                }
-                if (genre === "figurentheater") {
-                    countFigurentheater++;
-                }
-                if (genre === "multidisciplinair") {
-                    countMultidisciplinair++;
-                }
-                if (genre === "theater") {
-                    countTheater++;
-                }
-                if (genre === "opera") {
-                    countOpera++;
-                }
-                if (genre === "muziektheater") {
-                    countMuziektheater++;
-                }
-                if (genre === "concert") {
-                    countConcert++;
-                }
-            }
-
             document.getElementById("literatuur").innerHTML = "literatuur" + " (" + countLiteratuur + ")";
             document.getElementById("comedy").innerHTML = "Comedy" + " (" + countComedy + ")";
             document.getElementById("circus").innerHTML = "Circus" + " (" + countCircus + ")";
@@ -196,26 +140,11 @@ $(function () {
 
 
 
-//filteren
-document.getElementById("literatuur").addEventListener("click", clickLiteratuur);
 
-function clickLiteratuur() {
-    console.log("click");
-    
-    var zoekGenres = document.getElementById("genreVideo").innerHTML;
-    for (var i = 0; i < 100; i++) {
-        
-        if (data["items"][i]["genre-v2"] === "literatuur") {
-            console.log("ja");
 
-        }else {
-            console.log("nee");
 
-           
-        }
 
-    }
-}
+
 
         })
         .catch(err => {
@@ -224,13 +153,135 @@ function clickLiteratuur() {
 
 
         
+        let countGenres = entries => {
+            const filteredEntries = entries.map(entry=>{
+                return entry['genre-v2']
+            })
+            const reducedGenres = filteredEntries.reduce(groupBy, {})
+            function groupBy(acc, genre){
+                const count = acc[genre]||0;
+                return{
+                    ...acc,
+                    [genre]: count+1
+                }
+            }
+            console.log(reducedGenres)
+        }
+        
+
+});
+
+
+
+function clickLiteratuur() {
+    console.log("click");
+    
+    var zoekGenres = document.getElementById("genreVideo").innerHTML;
+    const array = [];
+    for (var i = 0; i < 100; i++) {
+        
+        if (data["items"][i]["genre-v2"] === "literatuur") {
+            array.push(data['items'][i])
+        }
+    }
+    // nodige properties aanpassen in de array.push()
+
+    // nu alle literaturen  --> innerHTML leeg maken en opnieuw vullen 
+    for(b=0;b<array.length;b++) {
+
+        // vul hier je innerHTML 
+        // vb = document.getElementById("testId").innerHTML += <p>${array.naam}</p><br>;
+    }
+}
+
+document.getElementById("literatuur").addEventListener("click", clickLiteratuur);
 
     // var genresVideos = document.getElementById("genreVideo");
     // console.log(genresVideos);
 
 
 
-});
+            // console.log(data["items"][i]["genre-v2"]);
+
+            // var testgenre = data["items"][i]["genre-v2"];
+
+            // const array = tezy = array.filter((concert) => testgenre.genre === 'dans');
+            // console.log(concertarray);
+
+
+            // //filteren
+            // let countLiteratuur = 0;
+            // let countComedy = 0;
+            // let countCircus = 0;
+            // let countDans = 0;
+            // let countFigurentheater = 0;
+            // let countMultidisciplinair = 0;
+            // let countTheater = 0;
+            // let countOpera = 0;
+            // let countMuziektheater = 0;
+            // let countConcert = 0;
+
+            // for (let i = 0; i < arrayLength; i++) {
+            //     var genre = data["items"][i]["genre-v2"];
+
+            //     if (genre === "literatuur") {
+            //         countLiteratuur++;
+            //     }
+            //     if (genre === "comedy") {
+            //         countComedy++;
+            //     }
+            //     if (genre === "circus") {
+            //         countCircus++;
+            //     }
+            //     if (genre === "dans") {
+            //         countDans++;
+            //     }
+            //     if (genre === "figurentheater") {
+            //         countFigurentheater++;
+            //     }
+            //     if (genre === "multidisciplinair") {
+            //         countMultidisciplinair++;
+            //     }
+            //     if (genre === "theater") {
+            //         countTheater++;
+            //     }
+            //     if (genre === "opera") {
+            //         countOpera++;
+            //     }
+            //     if (genre === "muziektheater") {
+            //         countMuziektheater++;
+            //     }
+            //     if (genre === "concert") {
+            //         countConcert++;
+            //     }
+            // }
+
+
+
+
+// //filteren
+// document.getElementById("literatuur").addEventListener("click", clickLiteratuur);
+
+// function clickLiteratuur() {
+//     console.log("click");
+    
+//     var zoekGenres = document.getElementById("genreVideo").innerHTML;
+//     for (var i = 0; i < 100; i++) {
+        
+//         if (data["items"][i]["genre-v2"] === "literatuur") {
+//             console.log("ja");
+
+//         }else {
+//             console.log("nee");
+
+           
+//         }
+
+//     }
+// }
+
+
+
 
 // function myfunction() {
 //     if(data["items"][i]["category"] === "volwassenen"){
@@ -380,3 +431,4 @@ function clickLiteratuur() {
 //   }
 // })
 // });
+
