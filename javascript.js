@@ -10,6 +10,7 @@ $(function () {
             countGenres(data.items);
             showDoelgroepen();
             showResults(data.items);
+            
         })
         .catch(err => {
             // Do something for an error here
@@ -18,6 +19,7 @@ $(function () {
 
 
     let countGenres = entries => {
+        
         const filteredEntries = entries.map(entry => {
             return entry['genre-v2']
         })
@@ -32,6 +34,7 @@ $(function () {
         }
         showGenres(reducedGenres, entries);
         showDoelgroepen();
+        
     }
     let showGenres = (countedGenres, entries) => {
         //Loopen over object - keys en values
@@ -59,7 +62,7 @@ $(function () {
             filterByDoelgroepen(entries);
         })
     }
-
+    
     let filterByDoelgroepen = entries => {
         const filterByVolwassenen = entries.filter(entry => entry.category == 'volwassenen');
         const filterByFamilie = entries.filter(entry => entry.category == 'familie');
@@ -86,20 +89,34 @@ $(function () {
     }
 
     let showResults = results =>{
+        let age;
+       
+        // $('#jsonarticles').append(entries);
         $('#jsonarticles').empty();
         results.forEach(result=>{
             if(result.age === undefined){
-                result.age = '';
+                age = '';
+            }else {
+                age = '<div id="ageVideo">'+ result.age + '</div>';   
             }
-            $('#jsonarticles').append('<section class="apartevideo"><section class="bovendeel"><div class="genreVideo">' + result.genre + '</div><div id="ageVideo">' + result.age + '</div><img class="foto" src="' + result.thumbnail.url + '"></section><article class="infovideo"><h2 class="naamVideo">' + result.name + '</h2><p class="locatieVideo">' + result.excerpt + '</p><p class="opgenomenVideo">'+ result['recorded-at']  + '</p><p class="duratieVideo">'+ result['video-length'] +'</p></article></section>')
+            $('#jsonarticles').append('<section class="apartevideo"><section class="bovendeel"><div class="genreVideo">' + result.genre + '</div>'+ age + '<img class="foto" src="' + result.thumbnail.url + '"></section><article class="infovideo"><h2 class="naamVideo">' + result.name + '</h2><p class="locatieVideo">' + result.excerpt + '</p><p class="opgenomenVideo">'+ result['recorded-at']  + '</p><p class="duratieVideo">'+ result['video-length'] +'</p></article></section>');
+            
 
         })
+
+        
     }
+    
  });
 
 let updateCount = reducedGenres =>{
     //Loopen over alle genre tags -> '.genrebtn'
     //Voor elke .genrebtn .count -> .text()
+        //Verander de tekst in de tags van het vorige aantal naar het huidige aantal
+        Object.entries(genres).forEach(genre => {
+            $(`.genrebtn ${genre[0]} .count`).text(`${genre[1]}`);
+
+        });
 }
 
 
