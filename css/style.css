@@ -349,7 +349,7 @@ flex-wrap: wrap;
   padding: 36px;
   padding-top: 10px;
 }
-#genreVideo, #ageVideo {
+.genreVideo, #ageVideo {
   display: inline-block;
 margin-bottom: 24px;
 padding: 3px 9px 3px 12px;
@@ -366,12 +366,12 @@ margin: 36px;
 position: absolute;
 z-index: 3;
 }
-#locatieVideo, #opgenomenVideo {
+.locatieVideo, .opgenomenVideo {
   font-size: 14px;
   line-height: 20px;
   margin: 0;
 }
-#duratieVideo {
+.duratieVideo {
   font-size: 16px;
   line-height: 20px;
   padding-top: 15px;
