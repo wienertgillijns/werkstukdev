@@ -33,12 +33,6 @@ $(function () {
         showGenres(reducedGenres, entries);
         showDoelgroepen();
     }
-
-
-
-
-//VAN HIER
-
     let showGenres = (countedGenres, entries) => {
         //Loopen over object - keys en values
         //Genre[0] bepaalt key, genre[1] bepaalt value
@@ -55,16 +49,23 @@ $(function () {
             }
             filterByDoelgroepen(entries);
         })
-        
+        $('.doelgroepfilter').click(function () {
+            $(this).toggleClass('selected');
+            if ($(this).hasClass('selected')) {
+                selectedDoelgroep.push(this.classList[1]);
+            } else {
+                selectedDoelgroep.splice(selectedDoelgroep.indexOf(this.classList[1]), 1);
+            }
+            filterByDoelgroepen(entries);
+        })
     }
 
-});
+ });
 
 let updateCount = reducedGenres =>{
     //Loopen over alle genre tags -> '.genrebtn'
     //Voor elke .genrebtn .count -> .text()
 }
-
 
 
 
