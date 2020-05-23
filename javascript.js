@@ -72,6 +72,21 @@ $(function () {
             filterByGenres(entries);
         }
     }
+
+    let filterByGenres = filteredResults => {
+        const filteredByGenre = [];
+        filteredResults.forEach(result => {
+            selectedGenres.forEach(selectedGenre => {
+                if (result['genre-v2'] == selectedGenre) {
+                    filteredByGenre.push(result);
+                }
+            })
+        });
+        showResults(filteredByGenre);
+    }
+   
+
+   
  });
 
 let updateCount = reducedGenres =>{
@@ -406,7 +421,6 @@ let updateCount = reducedGenres =>{
 // //videosectie weergeven
 // var elkevideo = '';
 // for (var i = 0; i < arrayLength; i++) {
-
 
 //     //loop voor undefined eruit te halen
 //     var getAge = data["items"][i]["age"];
