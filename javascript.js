@@ -84,9 +84,17 @@ $(function () {
         });
         showResults(filteredByGenre);
     }
-   
 
-   
+    let showResults = results =>{
+        $('#jsonarticles').empty();
+        results.forEach(result=>{
+            if(result.age === undefined){
+                result.age = '';
+            }
+            $('#jsonarticles').append('<section class="apartevideo"><section class="bovendeel"><div class="genreVideo">' + result.genre + '</div><div id="ageVideo">' + result.age + '</div><img class="foto" src="' + result.thumbnail.url + '"></section><article class="infovideo"><h2 class="naamVideo">' + result.name + '</h2><p class="locatieVideo">' + result.excerpt + '</p><p class="opgenomenVideo">'+ result['recorded-at']  + '</p><p class="duratieVideo">'+ result['video-length'] +'</p></article></section>')
+
+        })
+    }
  });
 
 let updateCount = reducedGenres =>{
