@@ -1,5 +1,5 @@
 $(function () {
-
+    selectedGenres = [];
     fetch('entries.json')
         .then(response => {
             return response.json()
@@ -10,132 +10,15 @@ $(function () {
 
             countGenres(data.items);
 
-            //array voor data ui de JSON file te halen
-            var arrayLength = data["items"].length;
+            
 
-
-
-            //videosectie weergeven
-            var elkevideo = '';
-            for (var i = 0; i < arrayLength; i++) {
-
-
-                //loop voor undefined eruit te halen
-                var getAge = data["items"][i]["age"];
-                var loopAgeNormal = '<div id="ageVideo">' + getAge + '</div>';
-                var loopAgeUndefined = '';
-                if (getAge === undefined) {
-
-
-                    getAge = loopAgeUndefined;
-                } else {
-                    getAge = loopAgeNormal;
-                }
-
-                var getlocatieVideo = data["items"][i]["excerpt"];
-                var loopLocatieNormal = '<p id="locatieVideo">' + getlocatieVideo + '</p>';
-                var loopLocatieUndefined = '';
-                if (getlocatieVideo === undefined) {
-
-
-                    getlocatieVideo = loopLocatieUndefined;
-                } else {
-                    getlocatieVideo = loopLocatieNormal;
-                }
-
-                var getOpgenomenVideo = data["items"][i]["recorded-at"];
-                var loopOpgegomenNormal = '<p id="opgenomenVideo">' + getOpgenomenVideo + '</p>';
-                var loopOpgegomenUndefined = '';
-                if (getOpgenomenVideo === undefined) {
-
-
-                    getOpgenomenVideo = loopOpgegomenUndefined;
-
-
-
-                } else {
-                    getOpgenomenVideo = loopOpgegomenNormal;
-                }
-
-                var getDuratieVideo = data["items"][i]["video-length"];
-                var loopDuratieNormal = '<p id="duratieVideo">' + getDuratieVideo + '</p>';
-                var loopDuratieUndefined = '';
-                if (getDuratieVideo === undefined) {
-
-
-                    getDuratieVideo = loopDuratieUndefined;
-                } else {
-                    getDuratieVideo = loopDuratieNormal;
-                }
-
-                elkevideo += '<section class="apartevideo videosapart" id="filterVideos"><section class="bovendeel"><div id="genreVideo">' + data["items"][i]["genre-v2"] + '</div>' + getAge + '<img class="foto" src="' + data["items"][i]["thumbnail"]["url"] + '"></section><article class="infovideo"><h2 id="naamVideo">' + data["items"][i]["name"] + '</h2>' + '<p id="locatieVideo">' + getlocatieVideo + getOpgenomenVideo + getDuratieVideo + '</article></section>';
-
-                var loopAparteVideos = document.getElementById("jsonarticles");
-                loopAparteVideos.innerHTML = elkevideo;
+            
 
 
 
 
 
 
-
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-            document.getElementById("literatuur").innerHTML = "literatuur" + " (" + countLiteratuur + ")";
-            document.getElementById("comedy").innerHTML = "Comedy" + " (" + countComedy + ")";
-            document.getElementById("circus").innerHTML = "Circus" + " (" + countCircus + ")";
-            document.getElementById("dans").innerHTML = "Dans" + " (" + countDans + ")";
-            document.getElementById("figurentheater").innerHTML = "Figurentheater" + " (" + countFigurentheater + ")";
-            document.getElementById("multidisciplinair").innerHTML = "Multidisciplinair" + " (" + countMultidisciplinair + ")";
-            document.getElementById("theater").innerHTML = "Theater" + " (" + countTheater + ")";
-            document.getElementById("opera").innerHTML = "Opera" + " (" + countOpera + ")";
-            document.getElementById("muziektheater").innerHTML = "Muziektheater" + " (" + countMuziektheater + ")";
-            document.getElementById("concert").innerHTML = "Concert" + " (" + countConcert + ")";
-
-
-
-
-            // //filteren
-            // document.getElementById("literatuur").addEventListener("click", clickLiteratuur);
-
-            // function clickLiteratuur() {
-            //     console.log("click");
-            //     for (var i = 0; i < arrayLength; i++) {
-            //         var genre = data["items"][i]["genre-v2"];
-            //         if (genre === "literatuur") {
-            //             console.log("literatuur");
-
-            //             document.getElementById("filterVideos").style.display = "none";
-
-
-            //         }
-
-            //     }
-            // }
-
-
-
-
-
-            // //filteren
-            // for (var i = 0; i < arrayLength; i++) {
-            //     var genre = data["items"][i]["genre-v2"];
-            //     if (genre === "circus"){
-            //         console.log("ja");
-            //     }
-
-            // }
 
 
 
@@ -165,36 +48,47 @@ $(function () {
                     [genre]: count+1
                 }
             }
-            console.log(reducedGenres)
+            showGenres(reducedGenres);
         }
         
+        let showGenres = countedGenres =>{
+            Object.entries(countedGenres).forEach(genre =>{
+                $(`#genretags`).append(`<button class='genrebtn buttonfilter ${genre[0]}'>${genre[0]} (${genre[1]})</button>`)
+            })
+            //key-values 0,1->entries
+            $
+        }
+
 
 });
 
 
 
-function clickLiteratuur() {
-    console.log("click");
+
+
+
+// function clickLiteratuur() {
+//     console.log("click");
     
-    var zoekGenres = document.getElementById("genreVideo").innerHTML;
-    const array = [];
-    for (var i = 0; i < 100; i++) {
+//     var zoekGenres = document.getElementById("genreVideo").innerHTML;
+//     const array = [];
+//     for (var i = 0; i < 100; i++) {
         
-        if (data["items"][i]["genre-v2"] === "literatuur") {
-            array.push(data['items'][i])
-        }
-    }
-    // nodige properties aanpassen in de array.push()
+//         if (data["items"][i]["genre-v2"] === "literatuur") {
+//             array.push(data['items'][i])
+//         }
+//     }
+//     // nodige properties aanpassen in de array.push()
 
-    // nu alle literaturen  --> innerHTML leeg maken en opnieuw vullen 
-    for(b=0;b<array.length;b++) {
+//     // nu alle literaturen  --> innerHTML leeg maken en opnieuw vullen 
+//     for(b=0;b<array.length;b++) {
 
-        // vul hier je innerHTML 
-        // vb = document.getElementById("testId").innerHTML += <p>${array.naam}</p><br>;
-    }
-}
+//         // vul hier je innerHTML 
+//         // vb = document.getElementById("testId").innerHTML += <p>${array.naam}</p><br>;
+//     }
+// }
 
-document.getElementById("literatuur").addEventListener("click", clickLiteratuur);
+// document.getElementById("literatuur").addEventListener("click", clickLiteratuur);
 
     // var genresVideos = document.getElementById("genreVideo");
     // console.log(genresVideos);
@@ -431,4 +325,125 @@ document.getElementById("literatuur").addEventListener("click", clickLiteratuur)
 //   }
 // })
 // });
+
+
+
+
+
+            // document.getElementById("literatuur").innerHTML = "literatuur" + " (" + countLiteratuur + ")";
+            // document.getElementById("comedy").innerHTML = "Comedy" + " (" + countComedy + ")";
+            // document.getElementById("circus").innerHTML = "Circus" + " (" + countCircus + ")";
+            // document.getElementById("dans").innerHTML = "Dans" + " (" + countDans + ")";
+            // document.getElementById("figurentheater").innerHTML = "Figurentheater" + " (" + countFigurentheater + ")";
+            // document.getElementById("multidisciplinair").innerHTML = "Multidisciplinair" + " (" + countMultidisciplinair + ")";
+            // document.getElementById("theater").innerHTML = "Theater" + " (" + countTheater + ")";
+            // document.getElementById("opera").innerHTML = "Opera" + " (" + countOpera + ")";
+            // document.getElementById("muziektheater").innerHTML = "Muziektheater" + " (" + countMuziektheater + ")";
+            // document.getElementById("concert").innerHTML = "Concert" + " (" + countConcert + ")";
+
+
+
+
+            // //filteren
+            // document.getElementById("literatuur").addEventListener("click", clickLiteratuur);
+
+            // function clickLiteratuur() {
+            //     console.log("click");
+            //     for (var i = 0; i < arrayLength; i++) {
+            //         var genre = data["items"][i]["genre-v2"];
+            //         if (genre === "literatuur") {
+            //             console.log("literatuur");
+
+            //             document.getElementById("filterVideos").style.display = "none";
+
+
+            //         }
+
+            //     }
+            // }
+
+
+
+
+
+            // //filteren
+            // for (var i = 0; i < arrayLength; i++) {
+            //     var genre = data["items"][i]["genre-v2"];
+            //     if (genre === "circus"){
+            //         console.log("ja");
+            //     }
+
+            // }
+
+
+
+
+            // //array voor data ui de JSON file te halen
+            // var arrayLength = data["items"].length;
+
+
+
+            // //videosectie weergeven
+            // var elkevideo = '';
+            // for (var i = 0; i < arrayLength; i++) {
+
+
+            //     //loop voor undefined eruit te halen
+            //     var getAge = data["items"][i]["age"];
+            //     var loopAgeNormal = '<div id="ageVideo">' + getAge + '</div>';
+            //     var loopAgeUndefined = '';
+            //     if (getAge === undefined) {
+
+
+            //         getAge = loopAgeUndefined;
+            //     } else {
+            //         getAge = loopAgeNormal;
+            //     }
+
+            //     var getlocatieVideo = data["items"][i]["excerpt"];
+            //     var loopLocatieNormal = '<p id="locatieVideo">' + getlocatieVideo + '</p>';
+            //     var loopLocatieUndefined = '';
+            //     if (getlocatieVideo === undefined) {
+
+
+            //         getlocatieVideo = loopLocatieUndefined;
+            //     } else {
+            //         getlocatieVideo = loopLocatieNormal;
+            //     }
+
+            //     var getOpgenomenVideo = data["items"][i]["recorded-at"];
+            //     var loopOpgegomenNormal = '<p id="opgenomenVideo">' + getOpgenomenVideo + '</p>';
+            //     var loopOpgegomenUndefined = '';
+            //     if (getOpgenomenVideo === undefined) {
+
+
+            //         getOpgenomenVideo = loopOpgegomenUndefined;
+
+
+
+            //     } else {
+            //         getOpgenomenVideo = loopOpgegomenNormal;
+            //     }
+
+            //     var getDuratieVideo = data["items"][i]["video-length"];
+            //     var loopDuratieNormal = '<p id="duratieVideo">' + getDuratieVideo + '</p>';
+            //     var loopDuratieUndefined = '';
+            //     if (getDuratieVideo === undefined) {
+
+
+            //         getDuratieVideo = loopDuratieUndefined;
+            //     } else {
+            //         getDuratieVideo = loopDuratieNormal;
+            //     }
+
+            //     elkevideo += '<section class="apartevideo videosapart" id="filterVideos"><section class="bovendeel"><div id="genreVideo">' + data["items"][i]["genre-v2"] + '</div>' + getAge + '<img class="foto" src="' + data["items"][i]["thumbnail"]["url"] + '"></section><article class="infovideo"><h2 id="naamVideo">' + data["items"][i]["name"] + '</h2>' + '<p id="locatieVideo">' + getlocatieVideo + getOpgenomenVideo + getDuratieVideo + '</article></section>';
+
+            //     var loopAparteVideos = document.getElementById("jsonarticles");
+            //     loopAparteVideos.innerHTML = elkevideo;
+
+
+
+
+
+
 
