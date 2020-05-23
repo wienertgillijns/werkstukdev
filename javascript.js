@@ -108,7 +108,6 @@ $(function () {
     }
     
  });
-
 let updateCount = reducedGenres =>{
     //Loopen over alle genre tags -> '.genrebtn'
     //Voor elke .genrebtn .count -> .text()
@@ -118,6 +117,39 @@ let updateCount = reducedGenres =>{
 
         });
 }
+
+
+
+//   $(document).ready(function() {
+//     $(".videos").slice(0, 3).show();
+//     if ($(".videos:hidden").length != 0) {
+//       $("#bekijkMeer").show();
+//     }
+//     $("#bekijkMeer").on('click', function(e) {
+//       e.preventDefault();
+//       $(".videos:hidden").slice(0, 6).slideDown();
+//       if ($(".videos:hidden").length == 0) {
+//         $("#bekijkMeer").fadeOut('slow');
+//       }
+//     });
+// //   });
+// $( document ).ready(function() {
+//     $(".apartevideo").slice(0, 4).show();
+
+// $("#bekijkMeer").on("click", function(e){
+//   e.preventDefault();
+//   $(".apartevideo:hidden").slice(0, 4).slideDown();
+//   if($(".apartevideo:hidden").length == 0) {
+//     $("#bekijkMeer").text("Geen videos meer").addClass("noContent");
+//   }
+// })
+// });
+
+
+
+
+
+
 
 
 
