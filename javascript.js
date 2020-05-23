@@ -60,6 +60,18 @@ $(function () {
         })
     }
 
+    let filterByDoelgroepen = entries => {
+        const filterByVolwassenen = entries.filter(entry => entry.category == 'volwassenen');
+        const filterByFamilie = entries.filter(entry => entry.category == 'familie');
+
+        if (selectedDoelgroep.includes('volwassenen') && selectedDoelgroep.length == 1) {
+            filterByGenres(filterByVolwassenen);
+        } else if (selectedDoelgroep.includes('familie') && selectedDoelgroep.length == 1) {
+            filterByGenres(filterByFamilie);
+        } else {
+            filterByGenres(entries);
+        }
+    }
  });
 
 let updateCount = reducedGenres =>{
