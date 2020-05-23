@@ -7,29 +7,10 @@ $(function () {
         .then(data => {
             // Work with JSON data here
             //items van 0 eruit halen
-
             countGenres(data.items);
-
-            
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        })
+            showDoelgroepen();
+            showResults(data.items);
+})
         .catch(err => {
             // Do something for an error here
         })
@@ -37,18 +18,20 @@ $(function () {
 
         
         let countGenres = entries => {
-            const filteredEntries = entries.map(entry=>{
+            const filteredEntries = entries.map(entry => {
                 return entry['genre-v2']
             })
             const reducedGenres = filteredEntries.reduce(groupBy, {})
-            function groupBy(acc, genre){
-                const count = acc[genre]||0;
-                return{
+    
+            function groupBy(acc, genre) {
+                const count = acc[genre] || 0;
+                return {
                     ...acc,
-                    [genre]: count+1
+                    [genre]: count + 1
                 }
             }
-            showGenres(reducedGenres);
+            showGenres(reducedGenres, entries);
+            showDoelgroepen();
         }
         
         let showGenres = countedGenres =>{
@@ -61,6 +44,13 @@ $(function () {
 
 
 });
+
+
+
+
+
+
+
 
 
 
