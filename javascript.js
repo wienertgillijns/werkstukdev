@@ -20,13 +20,21 @@ $(function () {
 
 
 
+
+
+//BUTTONS TEXT + COUNT
+        //Accumulator (acc)
+        // Current Value (cur)
+        // Current Index (idx)
+        // Source Array (src)
+
     let countGenres = entries => {
-        //genres ophalen en optellen 
-        
+
+        //map creeërt array met waarden (genre-V2) die gereturnd worden
         const filteredEntries = entries.map(entry => {
             return entry['genre-v2'];
-           
         })
+        //reduce functie gebruiken voor loopen door arrat en zien het aantal keer deze voorkomt en returnen
         const reducedGenres = filteredEntries.reduce(groupBy, {})
 
         function groupBy(acc, genre) {
@@ -39,14 +47,20 @@ $(function () {
         showGenres(reducedGenres, entries);
         showDoelgroepen();
     }
-
+        //LOOPEN door alle genres en APPENEN
     let showGenres = (countedGenres, entries) => {
-        //Loopen over object - keys en values
+        //Loopen over object - object.entries -> keys en values
         //Genre[0] bepaalt key, genre[1] bepaalt value
         Object.entries(countedGenres).forEach(genre => {
             $(`#genretags`).append(`<button class='genrebtn genrefilter ${genre[0]}'>${genre[0]} (<span class="count">${genre[1]}</span>)</button>`)
         })
         //key-values 0,1->entries
+
+
+
+
+
+//GESELECTEERDE OPHALEN
 
 
         //ALLE VIDDEOS IN FILTER ZETTEN
@@ -61,7 +75,6 @@ $(function () {
                 //als niet geselecteerd is eruit halen
                 genreSelect.splice(genreSelect.indexOf(this.classList[2]), 1);
             }
-            //entries in filter zetten
             filterByDoelgroepen(entries);
         })
     
@@ -75,10 +88,14 @@ $(function () {
                 //als niet geselecteerd is eruit halen
                 doelgroepSelect.splice(doelgroepSelect.indexOf(this.classList[1]), 1);
             }
-            //erin zetten
             filterByDoelgroepen(entries);
         })
     }
+
+
+//FILTEREN
+
+
     //FILTEREN VAN DOELGROEPEN
     let filterByDoelgroepen = entries => {
         //const aanmaken voor in entries te filteren naar volwassenen en familie
@@ -111,6 +128,10 @@ $(function () {
         showResults(filteredByGenre);
     }
 
+
+
+//RESULTATEN WEERGEVEN
+
     let showResults = results =>{
         let age;
        
@@ -132,6 +153,8 @@ $(function () {
     }
     
  });
+
+ //UPDATEN BUTTONS
 let updateCount = reducedGenres =>{
     //Loopen over alle genre tags -> '.genrebtn'
     //Voor elke .genrebtn .count -> .text()
