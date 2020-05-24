@@ -55,3 +55,99 @@ Ik heb eerst geprobeerd om een for loop te maken en telkens het aangegeven genre
 Na alles even opnieuw te bekijken met behulp van de docent wist ik meteen hoe ik dit eindwerk anders moest aanpakken om de filter volledig te laten werken, ik kon vele code hergebruiken wat een enorme meerwaarde heeft betekend. Het filteren is gelukt. Heb ook geprobeerd om de pagination in orde te brengen, in de update count zit een klein foutje en de search werkte niet volledig. De code staat tussen //.
 
 Ik heb heel wat tekst in // geschreven zodat de structuur stees goed zag en goed kon reflecteren aan de hand van het document dat we samen hebben opgesteld of ik nog stees in de juiste richting bezig was.
+
+
+
+
+
+
+## Basis die we hebben gemaakt
+Werkstuk Development
+Data ophalen uit json file en dit moet weergegeven worden in de html. Er moet ook kunnen gefilterd worden op basis van genre en  doelgroep.
+
+
+Structuur voor filteren video’s
+	Tijdens opstarten site
+Data Ophalen (fetchen)
+fetch('entries.json')
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+
+
+Loopen door aantal videos
+var arrayLength = data["items"].length;
+deze lengte gebruiken om te loopen door alle videos
+
+
+Videos met alle informatie toevoegen aan array
+array.push(video);
+met push werken
+Nog geen buttons aangetikt -> quantiteit staat op 0 (Niets wordt weergegeven, voorlopig)
+met slice werken?
+
+Zodra er een button wordt aangeklikt 
+Ophalen welk genre er is aangetikt
+data["items"][i]["genre-v2"]
+maak een array met enkel de geselecteerde genres (selectGenre)
+- maak array met video's die mogen getoond worden:
+- loop door array met videos
+
+Loopen in array door alle genres
+Zoeken naar het gewenste genre
+	if (data["items"][i]["genre-v2"] === volwassen) {
+
+                    data["items"][i]["genre-v2"] = “'';
+
+                } else {
+                    data["items"][i]["genre-v2"] = '<p id="opgenomenVideo">' + getOpgenomenVideo + '</p>';
+}
+
+Die video van dat genre moet worden opgehaald
+(loopen door alle videos en wanneer het dat genre tegenkomt dan moet hij die array ophalen en in html zetten) 
+
+Videos worden toegevoegd aan andere array
+met push werken
+
+
+Deze array komt in html te staan
+ var loopAparteVideos = document.getElementById("jsonarticles");
+                loopAparteVideos.innerHTML = (ARRAY);
+
+
+
+
+
+
+Structuur voor buttons 
+	Naam genre + hoeveelheid genre in button
+Data Ophalen (fetchen)
+fetch('entries.json')
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+
+Loopen door alle genres (genre-v2)
+Alle verschillende genres in een array zetten
+function onlyUnique(value, index, self) { 
+    return self.indexOf(value) === index;
+}
+
+// usage example:
+var a = [ARRAY];
+var unique = a.filter( onlyUnique );
+Loopen door alle genres(genre-V2)
+Aantal per genre in array zetten
+if (data["items"][i]["genre-v2"]; === "circus") {
+                    countCircus++;
+}
+https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
+
+
+Waardes in array worden in button naast de naam gezet tussen ()
+document.getElementById(button).innerHTML = genre + " (" + countGenre + ")";
+
+
+
