@@ -16,10 +16,6 @@ $(function () {
             // Do something for an error here
         })
 
-
-
-
-
 //BUTTONS TEXT + COUNT
         //Accumulator (acc)
         // Current Value (cur)
@@ -51,11 +47,18 @@ $(function () {
         //Genre[0] bepaalt key, genre[1] bepaalt value
         Object.entries(countedGenres).forEach(genre => {
             $(`#genretags`).append(`<button class='genrebtn genrefilter ${genre[0]}'>${genre[0]} (<span class="count">${genre[1]}</span>)</button>`)
-        })
+           
+           
+           
+            // //TEST	
+            // test('naam genre en aantal', () => {
+            //     const text = generateText('Klassiek',7);
+            // });
+    })
+
+
+
         //key-values 0,1->entries
-
-
-
 
 
 //GESELECTEERDE OPHALEN
@@ -87,7 +90,7 @@ $(function () {
                 doelgroepSelect.splice(doelgroepSelect.indexOf(this.classList[1]), 1);
             }
             filterByDoelgroepen(entries);
-        })
+        });
     }
 
 
@@ -145,6 +148,12 @@ $(function () {
             //appenden naar html met loop
             $('#jsonarticles').append('<section class="apartevideo"><section class="bovendeel"><div class="genreVideo">' + result.genre + '</div>'+ age + '<img class="foto" src="' + result.thumbnail.url + '"></section><article class="infovideo"><h2 class="naamVideo">' + result.name + '</h2><p class="locatieVideo">' + result.excerpt + '</p><p class="opgenomenVideo">'+ result['recorded-at']  + '</p><p class="duratieVideo">'+ result['video-length'] +'</p></article></section>');
             
+            
+            // //TEST	
+            // test('append age en naam', () => {
+            //     const text = generateText(19,'Klassiek concert');
+            // });
+            // })
 
         })
 
