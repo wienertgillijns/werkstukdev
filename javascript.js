@@ -1,9 +1,10 @@
 
 
 $(function () {
+    //aanmaken van variabelen
     let genreSelect = [];
     let doelgroepSelect = [];
-    fetch('entries.json')
+    fetch('entries.json')//fetchen van objecten
         .then(response => {
             return response.json()
         })
@@ -12,7 +13,6 @@ $(function () {
             countGenres(data.items);
             showDoelgroepen();
             showResults(data.items);
-            
         })
         .catch(err => {
             // Do something for an error here
@@ -21,9 +21,11 @@ $(function () {
 
 
     let countGenres = entries => {
+        //genres ophalen en optellen 
         
         const filteredEntries = entries.map(entry => {
-            return entry['genre-v2']
+            return entry['genre-v2'];
+           
         })
         const reducedGenres = filteredEntries.reduce(groupBy, {})
 
@@ -36,8 +38,8 @@ $(function () {
         }
         showGenres(reducedGenres, entries);
         showDoelgroepen();
-        
     }
+
     let showGenres = (countedGenres, entries) => {
         //Loopen over object - keys en values
         //Genre[0] bepaalt key, genre[1] bepaalt value
@@ -45,48 +47,67 @@ $(function () {
             $(`#genretags`).append(`<button class='genrebtn genrefilter ${genre[0]}'>${genre[0]} (<span class="count">${genre[1]}</span>)</button>`)
         })
         //key-values 0,1->entries
+
+
+        //ALLE VIDDEOS IN FILTER ZETTEN
+        //als genre geslecteerd is wordt css aangepast
         $('.genrefilter').click(function () {
             $(this).toggleClass('selected');
             if ($(this).hasClass('selected')) {
+                //als geselecteerd is aan classlist toevoegen
                 genreSelect.push(this.classList[2]);
             } else {
+                //splice gebruiken voor methode toe te voegen of eruit te halen en terug te sturen
+                //als niet geselecteerd is eruit halen
                 genreSelect.splice(genreSelect.indexOf(this.classList[2]), 1);
             }
+            //entries in filter zetten
             filterByDoelgroepen(entries);
         })
+    
+        //als doelgroep geslecteerd is wordt css aangepast
         $('.doelgroepfilter').click(function () {
             $(this).toggleClass('selected');
             if ($(this).hasClass('selected')) {
+                //als geselecteerd is aan classlist toevoegen
                 doelgroepSelect.push(this.classList[1]);
             } else {
+                //als niet geselecteerd is eruit halen
                 doelgroepSelect.splice(doelgroepSelect.indexOf(this.classList[1]), 1);
             }
+            //erin zetten
             filterByDoelgroepen(entries);
         })
     }
-    
+    //FILTEREN VAN DOELGROEPEN
     let filterByDoelgroepen = entries => {
+        //const aanmaken voor in entries te filteren naar volwassenen en familie
         const filterByVolwassenen = entries.filter(entry => entry.category == 'volwassenen');
         const filterByFamilie = entries.filter(entry => entry.category == 'familie');
-
+        //if statement wanneer de doelgroep volwassen bevat in filter zetten
         if (doelgroepSelect.includes('volwassenen') && doelgroepSelect.length == 1) {
             filterByGenres(filterByVolwassenen);
         } else if (doelgroepSelect.includes('familie') && doelgroepSelect.length == 1) {
             filterByGenres(filterByFamilie);
         } else {
+            //anders alle entries worden weergegeven
             filterByGenres(entries);
         }
     }
 
+    //FILTEREN VAN GENRES in filterByGenres
     let filterByGenres = resultsGefilterd => {
         const filteredByGenre = [];
+        //loopen in geslecteerde resultaten
         resultsGefilterd.forEach(result => {
-            genreSelect.forEach(selectedGenre => {
+        //loopen in geslecteerde resultaten van genres
+        genreSelect.forEach(selectedGenre => {
                 if (result['genre-v2'] == selectedGenre) {
                     filteredByGenre.push(result);
                 }
             })
         });
+        //zetten in functie showResults die later gaat gebruikt worden
         showResults(filteredByGenre);
     }
 
@@ -101,6 +122,7 @@ $(function () {
             }else {
                 age = '<div id="ageVideo">'+ result.age + '</div>';   
             }
+            //appenden naar html met loop
             $('#jsonarticles').append('<section class="apartevideo"><section class="bovendeel"><div class="genreVideo">' + result.genre + '</div>'+ age + '<img class="foto" src="' + result.thumbnail.url + '"></section><article class="infovideo"><h2 class="naamVideo">' + result.name + '</h2><p class="locatieVideo">' + result.excerpt + '</p><p class="opgenomenVideo">'+ result['recorded-at']  + '</p><p class="duratieVideo">'+ result['video-length'] +'</p></article></section>');
             
 
