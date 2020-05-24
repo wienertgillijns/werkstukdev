@@ -70,8 +70,25 @@
 
 
 
-
+       
         <section class="videosectie" id="videos">
+            <section class="meerarea">
+                <!-- search -->
+            <input type="text" placeholder="Zoek video" class="search" id="inputId">
+             <button type="button" id="bekijkMeer"  onclick="getInputValue();">Get Value</button>    
+             <script>
+             function getInputValue(){
+          // Selecting the input element and get its value 
+          var inputVal = document.getElementById("inputId").value;            
+          // Displaying the value
+          alert(inputVal);
+          }
+          //tussen alle results zoeken naar inputVal
+          //in array zetten
+          //appenden naar html
+    </script>
+
+            </section>
             <section class="filteren">
                 <section class="doelgroep">
                     <h1>Doelgroep</h1>
@@ -81,9 +98,12 @@
                 <section id="genretags">
                     <h1>Genre</h1>
                 </section>
+
+                
+               
             </section>
-
-
+         
+           
             <section id="jsonarticles">
                 <!-- <section class="apartevideo">
                 <section class="bovendeel"> 
@@ -101,10 +121,8 @@
 
             </section>
             <section class="meerarea">
-                <a href="#" id="bekijkMeer">Bekijk meer</a>
-            </section>
-
-
+            <a href="#" id="bekijkMeer">Bekijk meer</a>
+</section>
         </section>
         </section>
 

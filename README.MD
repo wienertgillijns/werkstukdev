@@ -52,5 +52,5 @@ De button voor meer videos te laden is toegevoegd maar werkt nog niet helemaal. 
 
 Ik heb eerst geprobeerd om een for loop te maken en telkens het aangegeven genre op te vragen en weer te geven in de console.log, aan de hand van deze methode wist ik ook hoeveel videos dit genre bevatten zodat ik dit in de button tussen de haakjes kan weergeven. DIt is me gelukt en heb ik gemaakt voor elk genre. Nu zie je op de pagina bij elk genre het aantal videos staan :)
 
-
+Na alles even opnieuw te bekijken met behulp van de docent wist ik meteen hoe ik ddit eindwerk moest aanpakken, ik kon vele code hergebruiken wat een enorme meerwaarde heeft betekend. Het filteren is gelukt. Heb ook geprobeerd om de pagination in orde te brengen, in de update count zit een klein foutje en de search werkte niet volledig. De code staat tussen // zodat we tijdens het mondeling examen even kunnen kijken waar mijn fout misschien zat.
 

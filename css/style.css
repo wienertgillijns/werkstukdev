@@ -300,7 +300,7 @@ line-height: 1.5;
 .videosectie h1 {
     margin: 30px 0 15px 0;
 }
-.buttonfilter, #bekijkMeer, .genrefilter, .doelgroepfilter {
+.buttonfilter, #bekijkMeer, .genrefilter, .doelgroepfilter,.search {
   margin-right: 10px;
 display: inline-block;
 margin-bottom: 24px;
@@ -322,7 +322,9 @@ border: 2px solid rgb(232, 237, 244);
   
     }
     
-
+.search {
+  width: 80%;
+}
 
 #videos {
   width: 100%;
@@ -404,13 +406,13 @@ section.bovendeel {
   text-align: center;
 }
 #bekijkMeer {
-padding: 12px 24px;
+  padding: 5px 24px;
   font-size: 14px;
-margin: 0;
-
-color: white;
-background-color: #fc2d75;
-text-decoration: none;
+  margin: 0;
+  width: 14%;
+  color: white;
+  background-color: #fc2d75;
+  text-decoration: none;
 }
 #bekijkMeer:hover {
 

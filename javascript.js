@@ -1,6 +1,8 @@
+
+
 $(function () {
-    let selectedGenres = [];
-    let selectedDoelgroep = [];
+    let genreSelect = [];
+    let doelgroepSelect = [];
     fetch('entries.json')
         .then(response => {
             return response.json()
@@ -46,18 +48,18 @@ $(function () {
         $('.genrefilter').click(function () {
             $(this).toggleClass('selected');
             if ($(this).hasClass('selected')) {
-                selectedGenres.push(this.classList[2]);
+                genreSelect.push(this.classList[2]);
             } else {
-                selectedGenres.splice(selectedGenres.indexOf(this.classList[2]), 1);
+                genreSelect.splice(genreSelect.indexOf(this.classList[2]), 1);
             }
             filterByDoelgroepen(entries);
         })
         $('.doelgroepfilter').click(function () {
             $(this).toggleClass('selected');
             if ($(this).hasClass('selected')) {
-                selectedDoelgroep.push(this.classList[1]);
+                doelgroepSelect.push(this.classList[1]);
             } else {
-                selectedDoelgroep.splice(selectedDoelgroep.indexOf(this.classList[1]), 1);
+                doelgroepSelect.splice(doelgroepSelect.indexOf(this.classList[1]), 1);
             }
             filterByDoelgroepen(entries);
         })
@@ -67,19 +69,19 @@ $(function () {
         const filterByVolwassenen = entries.filter(entry => entry.category == 'volwassenen');
         const filterByFamilie = entries.filter(entry => entry.category == 'familie');
 
-        if (selectedDoelgroep.includes('volwassenen') && selectedDoelgroep.length == 1) {
+        if (doelgroepSelect.includes('volwassenen') && doelgroepSelect.length == 1) {
             filterByGenres(filterByVolwassenen);
-        } else if (selectedDoelgroep.includes('familie') && selectedDoelgroep.length == 1) {
+        } else if (doelgroepSelect.includes('familie') && doelgroepSelect.length == 1) {
             filterByGenres(filterByFamilie);
         } else {
             filterByGenres(entries);
         }
     }
 
-    let filterByGenres = filteredResults => {
+    let filterByGenres = resultsGefilterd => {
         const filteredByGenre = [];
-        filteredResults.forEach(result => {
-            selectedGenres.forEach(selectedGenre => {
+        resultsGefilterd.forEach(result => {
+            genreSelect.forEach(selectedGenre => {
                 if (result['genre-v2'] == selectedGenre) {
                     filteredByGenre.push(result);
                 }
@@ -112,13 +114,23 @@ let updateCount = reducedGenres =>{
     //Loopen over alle genre tags -> '.genrebtn'
     //Voor elke .genrebtn .count -> .text()
         //Verander de tekst in de tags van het vorige aantal naar het huidige aantal
-        Object.entries(genres).forEach(genre => {
+        Object.entries(reducedGenres).forEach(genre => {
             $(`.genrebtn ${genre[0]} .count`).text(`${genre[1]}`);
 
         });
 }
 
+//search
+// var searchword = document.getElementById("searchengine").textContent;
+// console.log(searchword);
 
+function zoekenNaarInput(){
+    // Selecting the input element and get its value 
+    var inputVal = document.getElementById("inputValue").value;
+    
+    // Displaying the value
+    alert(inputVal);
+}
 
 //   $(document).ready(function() {
 //     $(".videos").slice(0, 3).show();
