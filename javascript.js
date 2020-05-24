@@ -1,8 +1,6 @@
-
-
 $(function () {
     //aanmaken van variabelen
-    let genreSelect = [];
+    let geselecteerdGenre = [];
     let doelgroepSelect = [];
     fetch('entries.json')//fetchen van objecten
         .then(response => {
@@ -10,9 +8,9 @@ $(function () {
         })
         .then(data => {
             // Work with JSON data here
-            countGenres(data.items);
-            showDoelgroepen();
-            showResults(data.items);
+            optellenGenres(data.items);
+            weergaveDoelgroepen();
+            weergaveResultaten(data.items);
         })
         .catch(err => {
             // Do something for an error here
@@ -28,15 +26,15 @@ $(function () {
         // Current Index (idx)
         // Source Array (src)
 
-    let countGenres = entries => {
+    let optellenGenres = entries => {
 
         //map creeërt array met waarden (genre-V2) die gereturnd worden
-        const filteredEntries = entries.map(entry => {
+        const gefilterddeEntries = entries.map(entry => {
             return entry['genre-v2'];
         })
         //reduce functie gebruiken voor loopen door arrat en zien het aantal keer deze voorkomt en returnen
-        const reducedGenres = filteredEntries.reduce(groupBy, {})
-
+        const reducedGenres = gefilterddeEntries.reduce(groupBy, {})
+        //Accumulator = teller
         function groupBy(acc, genre) {
             const count = acc[genre] || 0;
             return {
@@ -44,11 +42,11 @@ $(function () {
                 [genre]: count + 1
             }
         }
-        showGenres(reducedGenres, entries);
-        showDoelgroepen();
+        resultGenre(reducedGenres, entries);
+        weergaveDoelgroepen();
     }
         //LOOPEN door alle genres en APPENEN
-    let showGenres = (countedGenres, entries) => {
+    let resultGenre = (countedGenres, entries) => {
         //Loopen over object - object.entries -> keys en values
         //Genre[0] bepaalt key, genre[1] bepaalt value
         Object.entries(countedGenres).forEach(genre => {
@@ -69,11 +67,11 @@ $(function () {
             $(this).toggleClass('selected');
             if ($(this).hasClass('selected')) {
                 //als geselecteerd is aan classlist toevoegen
-                genreSelect.push(this.classList[2]);
+                geselecteerdGenre.push(this.classList[2]);
             } else {
                 //splice gebruiken voor methode toe te voegen of eruit te halen en terug te sturen
                 //als niet geselecteerd is eruit halen
-                genreSelect.splice(genreSelect.indexOf(this.classList[2]), 1);
+                geselecteerdGenre.splice(geselecteerdGenre.indexOf(this.classList[2]), 1);
             }
             filterByDoelgroepen(entries);
         })
@@ -99,13 +97,13 @@ $(function () {
     //FILTEREN VAN DOELGROEPEN
     let filterByDoelgroepen = entries => {
         //const aanmaken voor in entries te filteren naar volwassenen en familie
-        const filterByVolwassenen = entries.filter(entry => entry.category == 'volwassenen');
-        const filterByFamilie = entries.filter(entry => entry.category == 'familie');
+        const volwassenFilter = entries.filter(entry => entry.category == 'volwassenen');
+        const familieFilter = entries.filter(entry => entry.category == 'familie');
         //if statement wanneer de doelgroep volwassen bevat in filter zetten
         if (doelgroepSelect.includes('volwassenen') && doelgroepSelect.length == 1) {
-            filterByGenres(filterByVolwassenen);
+            filterByGenres(volwassenFilter);
         } else if (doelgroepSelect.includes('familie') && doelgroepSelect.length == 1) {
-            filterByGenres(filterByFamilie);
+            filterByGenres(familieFilter);
         } else {
             //anders alle entries worden weergegeven
             filterByGenres(entries);
@@ -118,24 +116,25 @@ $(function () {
         //loopen in geslecteerde resultaten
         resultsGefilterd.forEach(result => {
         //loopen in geslecteerde resultaten van genres
-        genreSelect.forEach(selectedGenre => {
-                if (result['genre-v2'] == selectedGenre) {
+        geselecteerdGenre.forEach(selectedGenre => {
+            if (result['genre-v2'] == selectedGenre) {
                     filteredByGenre.push(result);
                 }
             })
         });
-        //zetten in functie showResults die later gaat gebruikt worden
-        showResults(filteredByGenre);
+        //zetten in functie weergaveResultaten die later gaat gebruikt worden
+        weergaveResultaten(filteredByGenre);
     }
 
 
 
 //RESULTATEN WEERGEVEN
 
-    let showResults = results =>{
+    let weergaveResultaten = results =>{
         let age;
        
         // $('#jsonarticles').append(entries);
+        //leegmaken articles
         $('#jsonarticles').empty();
         results.forEach(result=>{
             if(result.age === undefined){
@@ -590,3 +589,24 @@ function zoekenNaarInput(){
 
 //     var loopAparteVideos = document.getElementById("jsonarticles");
 //     loopAparteVideos.innerHTML = elkevideo;
+
+
+//W3schools search:
+// Declare variables
+// var input, filter, ul, li, a, i, txtValue;
+// input = document.getElementById('myInput');
+// filter = input.value.toUpperCase();
+// ul = document.getElementById("myUL");
+// li = ul.getElementsByTagName('li');
+
+// // Loop through all list items, and hide those who don't match the search query
+// for (i = 0; i < li.length; i++) {
+//   a = li[i].getElementsByTagName("a")[0];
+//   txtValue = a.textContent || a.innerText;
+//   if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//     li[i].style.display = "";
+//   } else {
+//     li[i].style.display = "none";
+//   }
+// }
+// }
